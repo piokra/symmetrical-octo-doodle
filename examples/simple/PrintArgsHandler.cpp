@@ -4,7 +4,7 @@
 
 #include <Poco/JSON/Object.h>
 #include "PrintArgsHandler.h"
-#include "../JSONUtil.h"
+#include "../../include/JSONUtil.h"
 
 using namespace Poco;
 using namespace Poco::JSON;

@@ -5,7 +5,7 @@
 #ifndef ERF_PRINTARGSHANDLER_H
 #define ERF_PRINTARGSHANDLER_H
 
-#include "../EmptyRestHandler.h"
+#include "../../include/EmptyRestHandler.h"
 
 namespace ERF {
     class PrintArgsHandler : public EmptyRestHandler {
