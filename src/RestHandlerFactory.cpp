@@ -2,7 +2,7 @@
 // Created by panpiotr on 05.08.17.
 //
 
-#include "RestHandlerFactory.h"
+#include "../include/RestHandlerFactory.h"
 
 bool ARestHandlerFactory::wants(const std::string &uri) {
     return _parser.matches(uri);

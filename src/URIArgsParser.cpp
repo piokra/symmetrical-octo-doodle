@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "URIArgsParser.h"
+#include "../include/URIArgsParser.h"
 
 using namespace Poco;
 
@@ -40,17 +40,15 @@ std::string URIArgsParser::patternize(const std::string &pattern) {
         if (match.offset == std::string::npos) {
             break;
         }
-        _argNames.push_back(pattern.substr(match.offset, match.length));
+        _argNames.push_back(pattern.substr(match.offset+1, match.length-2));
 
     }
     regularExpression.subst(copy, "(\\w*)", RegularExpression::RE_GLOBAL);
     copy = "^/?" + copy;
     copy += "/?$";
-    std::cout << copy << std::endl;
     return copy;
 }
 
 bool URIArgsParser::matches(const std::string &uri) const {
-    std::cout << uri << std::endl;
     return _regex.match(uri, 0);
 }

@@ -2,7 +2,7 @@
 // Created by panpiotr on 05.08.17.
 //
 
-#include "EmptyRestHandler.h"
+#include "../include/EmptyRestHandler.h"
 
 Poco::Dynamic::Var
 ERF::EmptyRestHandler::onGet(const std::unordered_map<std::string, std::string> &params) {

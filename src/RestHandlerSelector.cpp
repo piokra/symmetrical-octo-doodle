@@ -2,8 +2,8 @@
 // Created by panpiotr on 05.08.17.
 //
 
-#include "RestHandlerSelector.h"
-#include "ForbiddenHandler.h"
+#include "../include/RestHandlerSelector.h"
+#include "../include/ForbiddenHandler.h"
 
 Poco::Net::HTTPRequestHandler *RestHandlerSelector::createRequestHandler(const Poco::Net::HTTPServerRequest &request) {
 

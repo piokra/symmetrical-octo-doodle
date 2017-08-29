@@ -24,8 +24,6 @@ namespace ERF {
 
         void defineOptions(Poco::Util::OptionSet &options) override;
 
-        int main(const std::vector<std::string> &args) override;
-
     private:
         std::unique_ptr<Poco::ThreadPool> _pool;
         std::unique_ptr<Poco::Net::HTTPServer> _server;
@@ -33,9 +31,6 @@ namespace ERF {
 
         Poco::SharedPtr<RestHandlerSelector> _selector;
 
-        void initPlainText();
-
-        void initSSL();
     };
 
     template<typename Handler>

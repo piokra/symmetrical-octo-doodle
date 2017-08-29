@@ -2,8 +2,9 @@
 // Created by panpiotr on 05.08.17.
 //
 
-#include "RestServer.h"
-#include "examples/PrintArgsHandler.h"
+#include "../include/RestServer.h"
+#include <Poco/Net/SecureServerSocket.h>
+#include "../examples/simple/PrintArgsHandler.h"
 
 #include <Poco/Environment.h>
 
@@ -14,7 +15,7 @@ using namespace Poco::Util;
 using namespace Poco::Net;
 
 void ERF::RestServer::initialize(Poco::Util::Application &self) {
-    loadConfiguration();
+    loadConfiguration("ERF.xml");
 
     if (config().has("erf.config")) {
         loadConfiguration(config().getString("erf.config"));
@@ -22,13 +23,37 @@ void ERF::RestServer::initialize(Poco::Util::Application &self) {
 
     bool ssl = config().getBool("erf.secure", false);
 
+    Application::initialize(self);
+
+    auto threadCount = config().getInt("erf.threads", Environment::processorCount());
+    auto port = config().getInt("erf.port", 80);
+
+    auto threadPool = new ThreadPool(2, threadCount);
+
+    ServerSocket socket;
+
     if (ssl) {
-        initSSL();
+        socket = SecureServerSocket(static_cast<UInt16>(port));
     } else {
-        initPlainText();
+        socket = ServerSocket(static_cast<UInt16>(port));
     }
 
-    Application::initialize(self);
+    if (_selector.isNull()) {
+        _selector = new RestHandlerSelector();
+    }
+
+    auto server = new HTTPServer(_selector, *threadPool, socket, new HTTPServerParams());
+
+    _pool.reset(threadPool);
+
+    _server.reset(server);
+
+    _serverThread = std::make_unique<Poco::Thread>();
+
+    _serverThread->start(*_server);
+
+    _server->start();
+
 }
 
 void ERF::RestServer::uninitialize() {
@@ -55,72 +80,27 @@ void ERF::RestServer::defineOptions(Poco::Util::OptionSet &options) {
     options.addOption(Option("config", "cf", "Path to a config file")
                               .required(false)
                               .binding("erf.config")
+                              .argument("value")
     );
 
     options.addOption(Option("secure", "sc", "Use secure server")
                               .required(false)
                               .validator(new IntValidator(0, 1))
                               .binding("erf.secure")
+                              .argument("value")
     );
 
     options.addOption(Option("port", "p", "Port to bind to")
                               .required(false)
                               .validator(new IntValidator(0, 65535))
                               .binding("erf.port")
+                              .argument("value")
     );
-
-    options.addOption(Option("cert", "pk", "SSL Certificate")
-                              .required(false)
-                              .binding("erf.ssl.cert"));
-
-    options.addOption(Option("key", "k", "SSL Pub key")
-                              .required(false)
-                              .binding("erf.ssl.key"));
-
-    options.addOption(Option("dcert", "dpk", "SSL Certificate Directory")
-                              .required(false)
-                              .binding("erf.ssl.dcert"));
-
 
     options.addOption(Option("threads", "t", "Thread Count")
                               .required(false)
                               .validator(new IntValidator(0, 1000))
-                              .binding("erf.threads"));
-}
-
-void ERF::RestServer::initPlainText() {
-    auto threadCount = config().getInt("erf.threads", Environment::processorCount());
-    auto port = config().getInt("erf.port", 80);
-
-    std::cout << threadCount << std::endl;
-
-    auto threadPool = new ThreadPool(2, threadCount);
-
-    auto socket = ServerSocket(static_cast<UInt16>(port));
-
-    if (_selector.isNull()) {
-        _selector = new RestHandlerSelector();
-    }
-
-    auto server = new HTTPServer(_selector, *threadPool, socket, new HTTPServerParams());
-
-    _pool.reset(threadPool);
-
-    _server.reset(server);
-
-    _serverThread.reset(new Thread());
-
-    _serverThread->start(*_server);
-}
-
-void ERF::RestServer::initSSL() {
-
-}
-
-int ERF::RestServer::main(const std::vector<std::string> &args) {
-    registerHandler<PrintArgsHandler>("{asia}/{piotr}/imie:{basia}");
-    _server->start();
-    waitForTerminationRequest();
-    std::cout << "Done" << std::endl;
+                              .binding("erf.threads")
+                              .argument("value"));
 }
 

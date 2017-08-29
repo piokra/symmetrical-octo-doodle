@@ -2,7 +2,7 @@
 // Created by panpiotr on 05.08.17.
 //
 
-#include "RestHandlerWithoutParamsProxy.h"
+#include "../include/RestHandlerWithoutParamsProxy.h"
 
 Poco::Dynamic::Var
 ERF::RestHandlerWithoutParamsProxy::onGet(const std::unordered_map<std::string, std::string> &params) {
