@@ -28,7 +28,7 @@ void ERF::RestServer::initialize(Poco::Util::Application &self) {
     auto threadCount = config().getInt("erf.threads", Environment::processorCount());
     auto port = config().getInt("erf.port", 80);
 
-    auto threadPool = new ThreadPool(2, threadCount);
+    auto threadPool = new ThreadPool(1, threadCount);
 
     ServerSocket socket;
 
