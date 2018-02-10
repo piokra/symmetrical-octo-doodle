@@ -2,7 +2,7 @@
 // Created by panpiotr on 05.08.17.
 //
 
-#include "../include/RestServer.h"
+#include "ERF/RestServer.h"
 #include <Poco/Net/SecureServerSocket.h>
 #include "../examples/simple/PrintArgsHandler.h"
 

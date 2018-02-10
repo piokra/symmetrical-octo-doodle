@@ -18,8 +18,8 @@ include_directories("include/")
 set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
-        include/IRestHandler.h
-        src/RestServer.cpp include/RestServer.h include/IRestHandlerWithParams.h src/RestHandlerWithoutParamsProxy.cpp include/RestHandlerWithoutParamsProxy.h include/HTTPHandler.hpp src/URIArgsParser.cpp include/URIArgsParser.h src/RestHandlerFactory.cpp include/RestHandlerFactory.h src/RestHandlerSelector.cpp include/RestHandlerSelector.h src/ForbiddenHandler.cpp include/ForbiddenHandler.h src/EmptyRestHandler.cpp include/EmptyRestHandler.h include/JSONUtil.h src/JSONUtil.cpp)
+        include/ERF/IRestHandler.h
+        src/RestServer.cpp include/ERF/RestServer.h include/ERF/IRestHandlerWithParams.h src/RestHandlerWithoutParamsProxy.cpp include/ERF/RestHandlerWithoutParamsProxy.h include/ERF/HTTPHandler.hpp src/URIArgsParser.cpp include/ERF/URIArgsParser.h src/RestHandlerFactory.cpp include/ERF/RestHandlerFactory.h src/RestHandlerSelector.cpp include/ERF/RestHandlerSelector.h src/ForbiddenHandler.cpp include/ERF/ForbiddenHandler.h src/EmptyRestHandler.cpp include/ERF/EmptyRestHandler.h include/ERF/JSONUtil.h src/JSONUtil.cpp)
 
 # MESSAGE(${LIBS})
 

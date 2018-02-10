@@ -4,7 +4,7 @@
 
 #include <Poco/SharedPtr.h>
 #include <Poco/JSON/Object.h>
-#include "../include/JSONUtil.h"
+#include "ERF/JSONUtil.h"
 
 
 Poco::SharedPtr<Poco::JSON::Object> ERF::Util::emptyObject() {

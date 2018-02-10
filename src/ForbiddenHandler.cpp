@@ -2,7 +2,7 @@
 // Created by panpiotr on 05.08.17.
 //
 
-#include "../include/ForbiddenHandler.h"
+#include "ERF/ForbiddenHandler.h"
 
 #include <Poco/Net/HTTPServerRequest.h>
 #include <Poco/Net/HTTPServerResponse.h>

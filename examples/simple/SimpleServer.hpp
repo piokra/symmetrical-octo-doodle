@@ -5,7 +5,7 @@
 #ifndef ERF_SIMPLESERVER_HPP
 #define ERF_SIMPLESERVER_HPP
 
-#include <RestServer.h>
+#include <ERF/RestServer.h>
 
 namespace ERF {
     class SimpleServer : public RestServer {
