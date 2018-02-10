@@ -13,7 +13,7 @@ include_directories(${Poco_DIRECTORIES})
 INCLUDE_DIRECTORIES(${Poco_INCLUDE_DIRS})
 include_directories("include/")
 
-# set(LIBS ${LIBS} ${Poco_LIBRARIES} -pthread -lPocoFoundation -lPocoNet -lPocoNetSSL -lPocoUtil -lPocoJSON)
+set(LIBS ${LIBS} ${Poco_LIBRARIES} -pthread -lPocoFoundation -lPocoNet -lPocoNetSSL -lPocoUtil -lPocoJSON -lPocoXML)
 
 set(CMAKE_CXX_STANDARD 14)
 
