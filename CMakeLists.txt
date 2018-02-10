@@ -35,4 +35,4 @@ target_link_libraries(SimpleExample ${LIBS})
 
 add_library(ERF SHARED ${SOURCE_FILES})
 
-target_link_libraries(ERF ${LIBS))
+target_link_libraries(ERF ${LIBS})
