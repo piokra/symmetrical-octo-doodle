@@ -5,6 +5,9 @@
 #ifndef ERF_RESTHANDLERWITHOUTPARAMSPROXY_H
 #define ERF_RESTHANDLERWITHOUTPARAMSPROXY_H
 
+
+#include <memory>
+
 #include "IRestHandlerWithParams.h"
 #include "IRestHandler.h"
 

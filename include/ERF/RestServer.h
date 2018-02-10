@@ -9,6 +9,8 @@
 #include <Poco/Net/HTTPServer.h>
 #include <Poco/ThreadPool.h>
 
+#include <memory>
+
 #include "RestHandlerSelector.h"
 
 namespace ERF {

@@ -6,7 +6,9 @@
 #define ERF_RESTHANDLERSELECTOR_H
 
 #include <Poco/RWLock.h>
+
 #include "RestHandlerFactory.h"
+#include <memory>
 
 class RestHandlerSelector : public Poco::Net::HTTPRequestHandlerFactory {
 public:
