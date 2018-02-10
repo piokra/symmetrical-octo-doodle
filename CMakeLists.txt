@@ -13,7 +13,7 @@ include_directories(${Poco_DIRECTORIES})
 INCLUDE_DIRECTORIES(${Poco_INCLUDE_DIRS})
 include_directories("include/")
 
-# set(LIBS ${LIBS} ${Poco_LIBRARIES})
+# set(LIBS ${LIBS} ${Poco_LIBRARIES} -pthread -lPocoFoundation -lPocoNet -lPocoNetSSL -lPocoUtil -lPocoJSON)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -31,8 +31,8 @@ configure_file(ERF.xml ERF.xml COPYONLY)
 configure_file(server.key server.key COPYONLY)
 configure_file(server.cert server.cert COPYONLY)
 
-target_link_libraries(SimpleExample ${LIBS} -pthread -lPocoFoundation -lPocoNet -lPocoNetSSL)
+target_link_libraries(SimpleExample ${LIBS})
 
 add_library(ERF SHARED ${SOURCE_FILES})
 
-target_link_libraries(ERF ${LIBS} -pthread -lPocoFoundation -lPocoNet -lPocoNetSSL) # My FindPoco.cmake fails to find PocoNetSSL
+target_link_libraries(ERF ${LIBS))

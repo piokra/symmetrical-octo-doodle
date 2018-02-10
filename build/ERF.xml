@@ -1,0 +1,19 @@
+<config>
+    <erf>
+        <port>1338</port>
+        <secure>true</secure>
+    </erf>
+    <openSSL>
+        <server>
+            <privateKeyFile>server.key</privateKeyFile>
+            <certificateFile>server.cert</certificateFile>
+            <verificationMode>relaxed</verificationMode>
+            <verificationDepth>9</verificationDepth>
+            <loadDefaultCAFile>true</loadDefaultCAFile>
+            <cipherList>ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH</cipherList>
+            <preferServerCiphers>true</preferServerCiphers>
+            <disableProtocols>sslv2</disableProtocols>
+        </server>
+        <fips>false</fips>
+    </openSSL>
+</config>
