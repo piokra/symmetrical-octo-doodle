@@ -1,4 +1,0 @@
-/home/touchstone/ERF/symmetrical-octo-doodle/build/CMakeFiles/rebuild_cache.dir
-/home/touchstone/ERF/symmetrical-octo-doodle/build/CMakeFiles/edit_cache.dir
-/home/touchstone/ERF/symmetrical-octo-doodle/build/CMakeFiles/ERF.dir
-/home/touchstone/ERF/symmetrical-octo-doodle/build/CMakeFiles/SimpleExample.dir
