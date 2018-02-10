@@ -17,7 +17,8 @@ using namespace Poco::Util;
 using namespace Poco::Net;
 
 void ERF::RestServer::initialize(Poco::Util::Application &self) {
-    
+
+    loadConfiguration();    
     try {
 	auto p = Path(argv()[0]);
         loadConfiguration(p.current() + "/ERF.xml");
