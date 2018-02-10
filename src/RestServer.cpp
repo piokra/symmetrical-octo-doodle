@@ -10,13 +10,20 @@
 
 #include <Poco/Util/IntValidator.h>
 
+#include <Poco/Path.h>
+
 using namespace Poco;
 using namespace Poco::Util;
 using namespace Poco::Net;
 
 void ERF::RestServer::initialize(Poco::Util::Application &self) {
-    loadConfiguration("ERF.xml");
-
+    
+    try {
+	auto p = Path(argv()[0]);
+        loadConfiguration(p.current() + "/ERF.xml");
+    } catch (Exception& e) {
+    	std::cout << e.displayText() << std::endl;
+    }
     if (config().has("erf.config")) {
         loadConfiguration(config().getString("erf.config"));
     }
