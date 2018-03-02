@@ -12,13 +12,13 @@ namespace ERF {
         EmptyBatchRestHandler(const Poco::Net::HTTPRequest &request);
 
         Poco::Dynamic::Var
-        onPost(Poco::JSON::Array::Ptr ptr, const std::unordered_map<std::string, std::string> &params) override final;
+        onPost(Poco::JSON::Array::Ptr ptr, const std::unordered_map<std::string, std::string> &params) override;
 
         Poco::Dynamic::Var
-        onPut(Poco::JSON::Array::Ptr ptr, const std::unordered_map<std::string, std::string> &params) override final;
+        onPut(Poco::JSON::Array::Ptr ptr, const std::unordered_map<std::string, std::string> &params) override;
 
         Poco::Dynamic::Var
-        onDelete(Poco::JSON::Array::Ptr ptr, const std::unordered_map<std::string, std::string> &params) override final;
+        onDelete(Poco::JSON::Array::Ptr ptr, const std::unordered_map<std::string, std::string> &params) override;
 
         Poco::Dynamic::Var
         onOnePost(Poco::JSON::Object::Ptr ptr, const std::unordered_map<std::string, std::string> &params) override;
