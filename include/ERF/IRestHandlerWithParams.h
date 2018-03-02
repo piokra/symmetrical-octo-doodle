@@ -10,6 +10,8 @@
 #include <unordered_map>
 #include <functional>
 
+#include "HTTPHandler.hpp"
+
 namespace ERF {
     class IRestHandlerWithParams {
     public:
@@ -28,7 +30,7 @@ namespace ERF {
             return _request;
         }
     private:
-        class HTTPHandler;
+        template<typename>
         friend class HTTPHandler;
         void setHeader(const Poco::Net::HTTPRequest& reference) {
             _request = std::cref(reference);
