@@ -13,8 +13,6 @@
 namespace ERF {
     class IBatchRestHandler : public ERF::IRestHandlerWithParams {
     public:
-        IBatchRestHandler(const Poco::Net::HTTPRequest &request);
-
         Poco::Dynamic::Var
         onPost(Poco::JSON::Array::Ptr ptr, const std::unordered_map<std::string, std::string> &params) override;
 

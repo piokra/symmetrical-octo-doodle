@@ -13,8 +13,6 @@
 namespace ERF {
     class IRestHandlerWithParams {
     public:
-        IRestHandlerWithParams(const Poco::Net::HTTPRequest& request) : _request(request) {};
-
         virtual Poco::Dynamic::Var onGet(const std::unordered_map<std::string, std::string> &params) = 0;
 
         virtual Poco::Dynamic::Var onPost(Poco::JSON::Array::Ptr ptr,
@@ -30,7 +28,13 @@ namespace ERF {
             return _request;
         }
     private:
-        const Poco::Net::HTTPRequest& _request;
+        class HTTPHandler;
+        friend class HTTPHandler;
+        void setHeader(const Poco::Net::HTTPRequest& reference) {
+            _request = std::cref(reference);
+        };
+
+        std::reference_wrapper<const Poco::Net::HTTPRequest> _request;
     };
 }
 #endif //ERF_IRESTHANDLERWITHPARAMS_H

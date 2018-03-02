@@ -22,7 +22,7 @@ public:
 
         try {
 
-
+            _handler.setHeader(request);
             Poco::JSON::Array::Ptr array;
             if (request.getMethod() != Poco::Net::HTTPRequest::HTTP_GET) {
 
