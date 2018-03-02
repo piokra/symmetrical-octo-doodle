@@ -18,8 +18,7 @@ set(LIBS ${LIBS} ${Poco_LIBRARIES} -pthread -lPocoFoundation -lPocoNet -lPocoNet
 set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
-        include/ERF/IRestHandler.h
-        src/RestServer.cpp include/ERF/RestServer.h include/ERF/IRestHandlerWithParams.h src/RestHandlerWithoutParamsProxy.cpp include/ERF/RestHandlerWithoutParamsProxy.h include/ERF/HTTPHandler.hpp src/URIArgsParser.cpp include/ERF/URIArgsParser.h src/RestHandlerFactory.cpp include/ERF/RestHandlerFactory.h src/RestHandlerSelector.cpp include/ERF/RestHandlerSelector.h src/ForbiddenHandler.cpp include/ERF/ForbiddenHandler.h src/EmptyRestHandler.cpp include/ERF/EmptyRestHandler.h include/ERF/JSONUtil.h src/JSONUtil.cpp)
+        src/RestServer.cpp include/ERF/RestServer.h include/ERF/IRestHandlerWithParams.h include/ERF/HTTPHandler.hpp src/URIArgsParser.cpp include/ERF/URIArgsParser.h src/RestHandlerFactory.cpp include/ERF/RestHandlerFactory.h src/RestHandlerSelector.cpp include/ERF/RestHandlerSelector.h src/ForbiddenHandler.cpp include/ERF/ForbiddenHandler.h src/EmptyRestHandler.cpp include/ERF/EmptyRestHandler.h include/ERF/JSONUtil.h src/JSONUtil.cpp)
 
 # MESSAGE(${LIBS})
 
@@ -33,6 +32,7 @@ configure_file(server.cert server.cert COPYONLY)
 
 target_link_libraries(SimpleExample ${LIBS})
 
-add_library(ERF SHARED ${SOURCE_FILES})
+add_library(ERF SHARED ${SOURCE_FILES} src/EmptyBatchRestHandler.cpp include/ERF/EmptyBatchRestHandler.h src/IBatchRestHandler.cpp include/ERF/IBatchRestHandler.h)
 
 target_link_libraries(ERF ${LIBS})
+

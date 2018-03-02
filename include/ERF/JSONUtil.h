@@ -8,6 +8,9 @@
 
 #include <Poco/SharedPtr.h>
 
+#include <Poco/JSON/Object.h>
+#include <Poco/JSON/Array.h>
+
 namespace Poco {
     namespace JSON {
         class Object;
