@@ -32,6 +32,5 @@ Poco::Dynamic::Var ERF::IBatchRestHandler::onDelete(Poco::JSON::Array::Ptr ptr,
     RETURN_ARRAY(onOneDelete);
 }
 
-ERF::IBatchRestHandler::IBatchRestHandler(const Poco::Net::HTTPRequest &request) : IRestHandlerWithParams(request) {}
 
 #undef RETURN_ARRAY

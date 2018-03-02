@@ -27,8 +27,6 @@ Poco::Dynamic::Var ERF::EmptyBatchRestHandler::onGet(const std::unordered_map<st
     throw Poco::Exception("Method not implemented");
 }
 
-ERF::EmptyBatchRestHandler::EmptyBatchRestHandler(const Poco::Net::HTTPRequest &request) : IBatchRestHandler(request) {}
-
 
 #define DEBATCH(METHOD) \
 auto ret = emptyArray(); \
